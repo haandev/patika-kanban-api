@@ -1,0 +1,117 @@
+{
+  "Request Handler": {
+    "prefix": "rhm",
+    "body": [
+      "import { RequestHandler } from \"@ooic/core\";",
+      "import { schema } from \".\";",
+      "",
+      "const ${TM_FILENAME_BASE}: RequestHandler = async (request, response, next) => {",
+      "  try {",
+      "    ${1:/* try code */}",
+      "  } catch (error) {",
+      "    next(error)",
+      "  }",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE}"
+    ],
+    "description": "Request Handler"
+  },
+  "Sequelize Model": {
+    "prefix": "sqm",
+    "body": [
+      "import { sequelize, DataTypes, Model } from \"@ooic/core\";",
+      "",
+      "export class ${TM_FILENAME_BASE} extends Model {",
+      "  id: number;",
+      "  ${1:/* type definitions */}",
+      "}",
+      "",
+      "${TM_FILENAME_BASE}.init(",
+      "  {",
+      "    id: {",
+      "      autoIncrement: true,",
+      "      type: DataTypes.INTEGER.UNSIGNED,",
+      "      allowNull: false,",
+      "      primaryKey: true,",
+      "    },",
+      "    ${2:/* field initialization */}",
+      "  },",
+      "  {",
+      "    tableName: \"${TM_FILENAME_BASE/(.*)$/${1:/downcase}/}\",",
+      "    sequelize,",
+      "  }",
+      ");",
+      ""
+    ],
+    "description": "Sequelize Model"
+  },
+  "Standart Router": {
+    "prefix": "rou",
+    "body": [
+      "import { Router } from \"@ooic/core\";",
+      "const router = Router();",
+      "",
+      "import * as ${TM_FILENAME_BASE} from \"@/controller/${TM_FILENAME_BASE}\";",
+      "",
+      "router.post(\"/\", ${TM_FILENAME_BASE}.create);",
+      "router.put(\"/:id\", ${TM_FILENAME_BASE}.update);",
+      "router.get(\"/\", ${TM_FILENAME_BASE}.get);",
+      "router.get(\"/:id\", ${TM_FILENAME_BASE}.getById);",
+      "router.delete(\"/:id\", ${TM_FILENAME_BASE}.destroy);",
+      "",
+      "export default router;",
+      ""
+    ],
+    "description": "Standart Router"
+  },
+  "Export Controller Method": {
+    "prefix": "excm",
+    "body": ["export { ${1:methodName} } from \"./methods/${1:methodName}\";"],
+    "description": "Export Controller Method"
+  },
+  "Export Controller Method Crud": {
+    "prefix": "crud",
+    "body": [
+      "export { get } from \"./methods/get\";",
+      "export { getById } from \"./methods/getById\";",
+      "export { update } from \"./methods/update\";",
+      "export { destroy } from \"./methods/destroy\";",
+      "export { create } from \"./methods/create\";"
+    ],
+    "description": "Export Controller Method Crud"
+  },
+  "Zod Schema File with Body and Params": {
+    "prefix": "zod",
+    "body": ["import { zod } from \"@ooic/core\";"],
+    "description": "Zod Schema File with Body and Params"
+  },
+  "Zod Schema Body": {
+    "prefix": "zb",
+    "body": ["export const body = zod.object({", "  ${1:title}: zod.${2:string}()", "});"],
+    "description": "Zod Schema File with Bod"
+  },
+  "Zod Schema Params": {
+    "prefix": "zp",
+    "body": ["export const params = zod.object({", "  ${1:id}: zod.string().regex(/^\\d+$/).transform(Number)", "});"],
+    "description": "Zod Schema File with Params"
+  },
+  "Zod Schema Query": {
+    "prefix": "zq",
+    "body": ["export const query = zod.object({", "  ${1:id}: zod.${2:number}()", "});"],
+    "description": "Zod Schema File with Query"
+  },
+  "Error handler middleware": {
+    "prefix": "errh",
+    "body": [
+      "import { ErrorRequestHandler, StatusCodes } from \"@ooic/core\";",
+      "const ${TM_FILENAME_BASE}: ErrorRequestHandler = async (error, _request, response, next) => {",
+      "  if (error.name === \"${TM_FILENAME_BASE}\") return response.status(${1:code}).send(error).json();",
+      "  next(error);",
+      "};",
+      "export default ${TM_FILENAME_BASE}",
+      ""
+    ],
+    "description": "Error handler middleware"
+  }
+}

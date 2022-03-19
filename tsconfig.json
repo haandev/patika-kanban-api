@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "target": "es6",
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "lib": ["es2017", "dom", "DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["./src/*"],
+    },
+    "typeRoots": ["./src/types", "./node_modules/@types"]
+  },
+  "include": ["**/*"],
+  "exclude": ["**/*.spec.ts"]
+}
