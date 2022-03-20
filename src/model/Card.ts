@@ -12,6 +12,7 @@ export class Card extends Model {
   comments: Comment[];
   list: List;
   listId: number;
+  order:number;
   checklists: Checklist[];
 }
 
@@ -29,6 +30,10 @@ Card.init(
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    order: {
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: true,
     },
     duedate: {
