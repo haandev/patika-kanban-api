@@ -8,8 +8,8 @@ const update: RequestHandler = async (request, response, next) => {
     const list = await List.findOne({
       where: {
         id: Number(id),
-        include: [{ association: "board" }],
       },
+      include: [{ association: "board" }],
     });
 
     if (list.board.ownerId !== request.authUser.id)
