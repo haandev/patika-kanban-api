@@ -8,6 +8,9 @@ const get: RequestHandler = async (request, response, next) => {
       where: {
         ownerId: request.authUser.id,
       },
+      include:[
+        {association:"members"}
+      ]
     });
     const boardsJoined = await Board.findAll({
       include: [{ association: "members", where: { id: request.authUser.id } }],

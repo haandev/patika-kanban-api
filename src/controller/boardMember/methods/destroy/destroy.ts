@@ -1,12 +1,11 @@
-import { Board } from "@/model/Board";
-import { List } from "@/model/List";
+import { BoardMember } from "@/model/BoardMember";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";
 
 const destroy: RequestHandler = async (request, response, next) => {
   try {
     const { id } = schema.params.parse(request.params);
-    const boardMember = await List.findOne({
+    const boardMember = await BoardMember.findOne({
       where: { id: Number(id) },
     });
    
