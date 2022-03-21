@@ -12,7 +12,7 @@ const get: RequestHandler = async (request, response, next) => {
         boardId:query.boardId
       },
       include:[
-        {association:"board"}
+        {association:"board"},
         {association:"user"}
       ]
     });
