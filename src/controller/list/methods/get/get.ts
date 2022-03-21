@@ -35,7 +35,7 @@ const get: RequestHandler = async (request, response, next) => {
       (a, b) => (a.order > b.order ? 1 : 0)
     );
 
-    response.status(200).send([lists]);
+    response.status(200).send(lists);
   } catch (error) {
     next(error);
   }
