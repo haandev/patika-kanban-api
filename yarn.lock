@@ -28,9 +28,9 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@ooic/core@https://github.com/haandev/ooic-core#1.0.2-orient":
+"@ooic/core@https://github.com/haandev/ooic-core#1.0.4-patika":
   version "1.0.0"
-  resolved "https://github.com/haandev/ooic-core#89c6ff92320e0e2a172f841dcfdc0602ec38d488"
+  resolved "https://github.com/haandev/ooic-core#9f38fb4e30caac41b3d544e87a73fe3f7fbbd611"
   dependencies:
     "@types/asciify" "^1.3.30"
     "@types/cookie-parser" "^1.4.2"

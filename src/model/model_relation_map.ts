@@ -112,6 +112,4 @@ List.addScope("withBoardMemberIds", {
   ],
 });
 
-
-import "./seeder"
 export default {};
