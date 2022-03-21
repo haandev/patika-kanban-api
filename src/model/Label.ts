@@ -2,7 +2,7 @@ import { sequelize, DataTypes, Model } from "@ooic/core";
 
 export class Label extends Model {
   id: number;
-  title: string
+  title: string;
 }
 
 Label.init(
@@ -14,9 +14,13 @@ Label.init(
       primaryKey: true,
     },
     title: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-      },
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    color: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+    },
     /* field initialization */
   },
   {

@@ -5,4 +5,5 @@ export const body = zod.object({
   listId: zod.number(),
   description: zod.string().optional(),
   duedate: zod.date().optional(),
+  order:zod.number().optional()
 });

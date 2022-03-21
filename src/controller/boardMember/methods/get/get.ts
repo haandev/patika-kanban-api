@@ -7,11 +7,14 @@ const get: RequestHandler = async (request, response, next) => {
   try {
     const query = schema.query.parse(request.query);
 
-    
     const boardMembers = await BoardMember.findAll({
       where:{
         boardId:query.boardId
-      }
+      },
+      include:[
+        {association:"board"}
+        {association:"user"}
+      ]
     });
 
     response.status(200).send(boardMembers);

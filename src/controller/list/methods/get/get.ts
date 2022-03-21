@@ -6,7 +6,7 @@ const get: RequestHandler = async (request, response, next) => {
   try {
     const query = schema.query.parse(request.query);
 
-    const listsFromOwnedBoards = await List.findAll({
+    const listsFromOwnedBoards = await List.scope("nestedInclude").findAll({
       include: [
         {
           association: "board",
@@ -18,7 +18,7 @@ const get: RequestHandler = async (request, response, next) => {
       ],
       order: [["order", "asc"]],
     });
-    const listsFromJoinedBoards = await List.findAll({
+    const listsFromJoinedBoards = await List.scope("nestedInclude").findAll({
       include: [
         {
           association: "board",

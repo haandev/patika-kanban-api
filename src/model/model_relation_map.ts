@@ -24,7 +24,6 @@ Card.belongsToMany(Label, {
   as: "labels",
 });
 
-
 Card.hasMany(Checklist, { as: "checklists", foreignKey: "cardId" });
 Card.hasMany(Comment, { as: "comments", foreignKey: "cardId" });
 
@@ -87,8 +86,7 @@ Board.addScope("nestedInclude", {
   ],
 });
 Board.addScope("withMemberIds", {
-  include: [
-    { association: "members", model:User.scope("idList")}],
+  include: [{ association: "members", model: User.scope("idList") }],
 });
 Board.addScope("byOwnership", (ownerId: number) => ({
   where: { ownerId },
@@ -109,8 +107,11 @@ List.addScope("withBoardMemberIds", {
   include: [
     {
       association: "board",
-      model: Board.scope("withMemberIds")
+      model: Board.scope("withMemberIds"),
     },
   ],
 });
+
+
+import "./seeder"
 export default {};
