@@ -60,6 +60,7 @@ CardLabel.belongsTo(Card, { as: "card", foreignKey: "cardId" });
 CardLabel.belongsTo(Label, { as: "label", foreignKey: "labelId" });
 
 Card.addScope("nestedInclude", {
+  order:[["order","asc"]],
   include: [
     { association: "labels" },
     { association: "checklists" },
@@ -68,6 +69,7 @@ Card.addScope("nestedInclude", {
 });
 
 List.addScope("nestedInclude", {
+  order:[["order","asc"]],
   include: [
     {
       association: "cards",
