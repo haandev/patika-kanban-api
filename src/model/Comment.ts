@@ -3,7 +3,7 @@ import { User } from "./User";
 
 export class Comment extends Model {
   id: number;
-  messsge: string;
+  message: string;
   author: User;
 }
 
