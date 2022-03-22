@@ -9,6 +9,7 @@ const get: RequestHandler = async (request, response, next) => {
 
     
     const cards = await Card.scope("nestedInclude").findAll({
+      order:[["order","asc"]],
       where: {
         ...listId?{listId}:{}
       }
