@@ -13,7 +13,7 @@ const get: RequestHandler = async (request, response, next) => {
           model: Board.scope([
             { method: ["byMembership", request.authUser.id] },
           ]),
-          ...(query.boardId ? { id: query.boardId } : {}),
+          ...(query.boardId ? { where: { id: query.boardId } } : {}),
         },
       ],
       order: [["order", "asc"]],
@@ -25,7 +25,7 @@ const get: RequestHandler = async (request, response, next) => {
           model: Board.scope([
             { method: ["byOwnership", request.authUser.id] },
           ]),
-          ...(query.boardId ? { id: query.boardId } : {}),
+          ...(query.boardId ? { where: { id: query.boardId } } : {}),
         },
       ],
       order: [["order", "asc"]],
